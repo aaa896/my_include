@@ -26,9 +26,11 @@ struct Array_Header {
 
 
 #define array_reset(array) do {\
-    memset((array), 0 , sizeof(*(array)) * ((Array_Header*)(array) - 1)->size);\
-    if ((array)){\
-        ((Array_Header*)(array) - 1)->size = 0;\
+    if ((array)) {\
+        memset((array), 0 , sizeof(*(array)) * ((Array_Header*)(array) - 1)->size);\
+        if ((array)){\
+            ((Array_Header*)(array) - 1)->size = 0;\
+        }\
     }\
 }while(0);
 
