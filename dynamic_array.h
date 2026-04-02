@@ -35,8 +35,10 @@ struct Array_Header {
 }while(0);
 
 #define array_free(array) do{\
+    if ((array) != 0) {\
     free(((Array_Header*)(array) - 1));\
     (array) = 0;\
+    }\
 }while(0)
 
 
