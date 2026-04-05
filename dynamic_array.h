@@ -16,9 +16,8 @@ struct Array_Header {
 
 
 #define array_create(array, create_size) do{\
-    size_t size = (sizeof(Array_Header) + ((create_size) * sizeof(*(array))));\
-    (array) = malloc(size);\
-    memset((array),0, size);\
+    (array) = malloc((sizeof(Array_Header) + ((create_size) * sizeof(*(array)))));\
+    memset((array),0, (sizeof(Array_Header) + ((create_size) * sizeof(*(array)))));\
     ((Array_Header*)(array))->capacity = ((create_size));\
     ((Array_Header*)(array))->size = 0;\
     (array) = (void*)( (Array_Header*)(array) + 1);\
